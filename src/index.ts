@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import program from "commander";
 import { Provider } from "./providers/provider";
 import { UptimeRobotProvider } from "./providers/uptime-robot.provider";
