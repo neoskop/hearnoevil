@@ -4,18 +4,22 @@ import program from "commander";
 import { Provider } from "./providers/provider";
 import { UptimeRobotProvider } from "./providers/uptime-robot.provider";
 
-const loadProvider = (name: string, id: string, apiKey: string): Provider => {
+const loadProvider = (
+  name: string,
+  ids: string[],
+  apiKey: string
+): Provider => {
   switch (name) {
     case "uptimerobot":
-      return new UptimeRobotProvider(id, apiKey);
+      return new UptimeRobotProvider(ids, apiKey);
   }
 
   throw new Error(`Provider ${name} is not supported`);
 };
 
 const executeProviderCommand = async (
-  providerConsumer: (provider: Provider) => Promise<void>
-): Promise<void> => {
+  providerConsumer: (provider: Provider) => Promise<void[]>
+): Promise<void[]> => {
   const provider = loadProvider(program.service, program.id, program.apiKey);
   return providerConsumer(provider);
 };
@@ -25,7 +29,14 @@ program
   .description("Mute you monitors when doing something evil.")
   .option("-s, --service <service>", "The monitor service", "uptimerobot")
   .option("-a, --api-key <api-key>", "API key")
-  .option("-i, --id <id>", "The ID of the monitor");
+  .option(
+    "-i, --id <value>",
+    "The ID of the monitor (repeatable)",
+    (value, previous) => {
+      return previous.concat([value]);
+    },
+    []
+  );
 program
   .command("mute")
   .description("Mute a monitor")

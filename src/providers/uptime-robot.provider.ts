@@ -2,19 +2,20 @@ import * as request from "request";
 import { Provider } from "./provider";
 
 export class UptimeRobotProvider extends Provider {
-  public mute(): Promise<void> {
-    return this.sendEditMonitorRequest({ status: 0 });
+  public mute(): Promise<void[]> {
+    return Promise.all(
+      this.ids.map(id => this.sendEditMonitorRequest({ id, status: 0 }))
+    );
   }
 
-  public unmute(): Promise<void> {
-    return this.sendEditMonitorRequest({ status: 1 });
+  public unmute(): Promise<void[]> {
+    return Promise.all(
+      this.ids.map(id => this.sendEditMonitorRequest({ id, status: 1 }))
+    );
   }
 
   private sendEditMonitorRequest(props: any): Promise<void> {
-    const form = Object.assign(
-      { api_key: this.apiKey, id: this.id, format: "json" },
-      props
-    );
+    const form = Object.assign({ api_key: this.apiKey, format: "json" }, props);
     return new Promise((resolve, reject) => {
       request.post(
         {
