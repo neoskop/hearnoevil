@@ -26,6 +26,12 @@ git pull --rebase
 npm version $1
 version=`cat package.json | jq -r .version`
 
+sed -i.bak "s/version('[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+')/version('$version')/g" src/index.ts
+rm -rf src/index.ts.bak
+yarn
+yarn build
+npm publish
+
 docker build -t neoskop/hearnoevil:$version .
 docker build -t neoskop/hearnoevil:latest .
 docker push neoskop/hearnoevil:$version
