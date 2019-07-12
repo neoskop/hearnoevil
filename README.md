@@ -4,7 +4,7 @@ Mute you monitors when doing something evil.
 
 ## Synopsis
 
-`hearnoevil` (🙉) is a CLI that enables you to enable and disable and re-enable a check of an external monitoring service. Currently only [Uptime Robot][1] is supported, however.
+`hearnoevil` (🙉) is a CLI that enables you to disable and re-enable a check of an external monitoring service. Currently only [Uptime Robot][1] is supported, however. You can use this tool, when you don't want anyone to notice when you do something evil ... or when deploying.
 
 ## Usage
 
