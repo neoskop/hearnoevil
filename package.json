@@ -1,0 +1,39 @@
+{
+  "name": "@neoskop/hearnoevil",
+  "version": "0.0.1",
+  "description": "Mute you monitors when doing something evil.",
+  "main": "./lib/index.js",
+  "bin": {
+    "hearnoevil": "./lib/index.js"
+  },
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "create": "npm run build && npm run test",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neoskop/hearnoevil.git"
+  },
+  "keywords": [
+    "uptimerobot",
+    "monitor"
+  ],
+  "author": "Arne Diekmann <diekmann@neoskop.de>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/neoskop/hearnoevil/issues"
+  },
+  "homepage": "https://github.com/neoskop/hearnoevil#readme",
+  "dependencies": {
+    "commander": "2.20.0",
+    "request": "2.88.0"
+  },
+  "devDependencies": {
+    "@types/node": "12.6.2",
+    "@types/request": "2.48.1",
+    "nodemon": "1.19.1",
+    "ts-node": "8.3.0",
+    "typescript": "3.5.3"
+  }
+}
