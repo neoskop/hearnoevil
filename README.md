@@ -12,7 +12,7 @@ You can either start the CLI as a Docker container:
 
 ```
 $ docker run neoskop/hearnoevil -a <api-key> -i <id-1> -i <id-2> mute
-$ docker run neoskop/hearnoevil -a <api-key> -i <id-1> -i <id-2> mute
+$ docker run neoskop/hearnoevil -a <api-key> -i <id-1> -i <id-2> unmute
 ```
 
 Or you can install an NPM package and run the CLI directly:
