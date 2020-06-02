@@ -1,6 +1,6 @@
 {
   "name": "@neoskop/hearnoevil",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Mute you monitors when doing something evil.",
   "main": "./lib/index.js",
   "bin": {
