@@ -29,7 +29,7 @@ program
   .description("Mute you monitors when doing something evil.")
   .option("-s, --service <service>", "The monitor service", "uptimerobot")
   .option("-a, --api-key <api-key>", "API key")
-  .option(
+  .option<string[]>(
     "-i, --id <value>",
     "The ID of the monitor (repeatable)",
     (value, previous) => {
@@ -41,9 +41,9 @@ program
   .command("mute")
   .description("Mute a monitor")
   .action(() => {
-    executeProviderCommand(p => {
+    executeProviderCommand((p) => {
       return p.mute();
-    }).catch(err => {
+    }).catch((err) => {
       console.error(`Muting failed: ${err}`);
       process.exit(1);
     });
@@ -52,9 +52,9 @@ program
   .command("unmute")
   .description("Unmute a monitor")
   .action(() => {
-    executeProviderCommand(p => {
+    executeProviderCommand((p) => {
       return p.unmute();
-    }).catch(err => {
+    }).catch((err) => {
       console.error(`Unmuting failed: ${err}`);
       process.exit(1);
     });
