@@ -23,7 +23,7 @@ if [[ `git status --porcelain` ]]; then
 fi
 
 git pull --rebase
-npm version $1
+npm --no-git-tag-version version $1
 version=`cat package.json | jq -r .version`
 
 sed -i.bak "s/version('[[:digit:]]\+\.[[:digit:]]\+\.[[:digit:]]\+')/version('$version')/g" src/index.ts
